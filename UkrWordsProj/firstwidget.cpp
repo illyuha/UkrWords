@@ -1,13 +1,9 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <QDebug>
-#include <QVector>
-#include <QStringList>
-//#include <QEvent>
+#include "firstwidget.h"
+#include "ui_firstwidget.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+FirstWidget::FirstWidget(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::FirstWidget)
 {
     ui->setupUi(this);
     // Not sure whether the language of the UI should be modifiable
@@ -21,15 +17,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->nextPushButton->setText("ДАЛІ");
 }
 
-MainWindow::~MainWindow()
+FirstWidget::~FirstWidget()
 {
     delete ui;
 }
 
-void MainWindow::on_langComboBox_currentIndexChanged(int index)
+const QPushButton * FirstWidget::getNextButton()
+{
+    return ui->nextPushButton;
+}
+
+/*void MainWindow::on_langComboBox_currentIndexChanged(int index)
 {
 //    QVector<QString> v(2);
 //    v[0] = "Choose the language";
 //    v[1] = "Оберіть мову";
 //    ui->langLabel->setText(v[index]);
-}
+}*/

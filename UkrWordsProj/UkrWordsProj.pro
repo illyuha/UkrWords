@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-01-09T16:45:10
+# Project created by QtCreator 2014-02-10T23:15:55
 #
 #-------------------------------------------------
 
@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        firstwidget.cpp \
+    secondwidget.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += firstwidget.h \
+    secondwidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += firstwidget.ui \
+    secondwidget.ui
