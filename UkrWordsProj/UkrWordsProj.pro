@@ -14,10 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         firstwidget.cpp \
-    secondwidget.cpp
+    secondwidget.cpp \
+    wheelukrword.cpp
 
 HEADERS  += firstwidget.h \
-    secondwidget.h
+    secondwidget.h \
+    wheelukrword.h \
+    ukrword.h
 
 FORMS    += firstwidget.ui \
     secondwidget.ui

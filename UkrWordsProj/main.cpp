@@ -6,13 +6,17 @@
 
 int main(int argc, char *argv[])
 {
+    // TODO: delete all the unnecessary pointers
+
+    // TODO: decide how to transfer data between two widgets
+    // Useful link: stackoverflow.com/questions/6199962/how-to-pass-data-from-one-form-to-another-in-qt
+
     QApplication a(argc, argv);
 
-    // TODO: rename variables
     FirstWidget firstWidget;
     SecondWidget secondWidget;
 
-    QStateMachine stateMachine(&firstWidget); // is this paramater necessary?
+    QStateMachine stateMachine;
     QState firstState, secondState;
 
     const QPushButton * firstNextButton = firstWidget.getNextButton();

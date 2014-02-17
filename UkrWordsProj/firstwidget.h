@@ -15,7 +15,6 @@ class FirstWidget : public QWidget
 
 private:
     Ui::FirstWidget * ui;
-    QPushButton * nextButton;
 
 public:
     explicit FirstWidget(QWidget * parent = 0);
