@@ -36,6 +36,9 @@
    </layout>
   </widget>
   <widget class="QPushButton" name="nextPushButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>414</x>

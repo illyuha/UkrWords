@@ -18,7 +18,7 @@ class SecondWidget : public QWidget
 private:
     Ui::SecondWidget * ui;
     QGraphicsScene * scene;
-    // UkrWord * ukrword;
+    UkrWord * ukrword;
     UkrWord * createUkrWord(const QString &);
 
 public:
@@ -27,6 +27,8 @@ public:
     const QPushButton * getNextButton();
     const QPushButton * getBackButton();
 
+public slots:
+    void onUkrwordFormChanged(const QString &);
 };
 
 #endif // SECONDWIDGET_H

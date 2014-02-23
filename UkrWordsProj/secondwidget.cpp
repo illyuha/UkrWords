@@ -34,9 +34,14 @@ const QPushButton * SecondWidget::getBackButton()
 // Factory method
 UkrWord * SecondWidget::createUkrWord(const QString & type)
 {
-    UkrWord * ukrword = NULL;
+    ukrword = NULL;
     // TODO: avoid the "hardcoding", e.g. store somewhere the strings as constants
     if (type == "Коловорот")
         ukrword = new WheelUkrWord(scene);
     return ukrword;
+}
+
+void SecondWidget::onUkrwordFormChanged(const QString &text)
+{
+    ukrword = createUkrWord(text);
 }

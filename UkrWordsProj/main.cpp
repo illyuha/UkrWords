@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
     QObject::connect(&secondState,SIGNAL(exited()),&secondWidget,SLOT(hide()));
     QObject::connect(&firstState,SIGNAL(entered()),&firstWidget,SLOT(show()));
 
+    // QString?
+    QObject::connect(&firstWidget,SIGNAL(ukrwordFormChanged(const QString &)),&secondWidget,SLOT(onUkrwordFormChanged(const QString &)));
+
     QEventTransition toSecondWidgetTransition(const_cast<QPushButton *>(firstNextButton),QEvent::MouseButtonPress);
     QEventTransition toFirstWidgetTransition(const_cast<QPushButton *>(firstBackButton),QEvent::MouseButtonPress);
 

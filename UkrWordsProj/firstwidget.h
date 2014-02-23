@@ -16,11 +16,16 @@ class FirstWidget : public QWidget
 private:
     Ui::FirstWidget * ui;
 
+private slots:
+    void onUkrwordFormChanged();
+
 public:
     explicit FirstWidget(QWidget * parent = 0);
     ~FirstWidget();
     const QPushButton * getNextButton();
 
+signals:
+    void ukrwordFormChanged(const QString &text);
 };
 
 #endif // FIRSTWIDGET_H
