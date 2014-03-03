@@ -6,11 +6,12 @@
 class WheelUkrWord: public UkrWord
 {
 public:
-    WheelUkrWord(QGraphicsScene * scene):
-        UkrWord(scene)
+    WheelUkrWord(QGraphicsView * view):
+        UkrWord(view)
     {
     }
-    void draw();
+
+    void draw() const;
 };
 
 #endif // WHEELUKRWORD_H

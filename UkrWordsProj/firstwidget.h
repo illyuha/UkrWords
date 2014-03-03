@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <ukrword.h>
 
 namespace Ui
 {
@@ -17,7 +18,7 @@ private:
     Ui::FirstWidget * ui;
 
 private slots:
-    void onUkrwordFormChanged();
+    void onInputChanged();
 
 public:
     explicit FirstWidget(QWidget * parent = 0);
@@ -25,7 +26,7 @@ public:
     const QPushButton * getNextButton();
 
 signals:
-    void ukrwordFormChanged(const QString &text);
+    void ukrwordFormChanged(const QString &, const UkrWord::Bundle &);
 };
 
 #endif // FIRSTWIDGET_H

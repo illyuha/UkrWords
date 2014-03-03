@@ -19,8 +19,10 @@ FirstWidget::FirstWidget(QWidget *parent) :
     QStringList formsList = QStringList() << "--Не обрано--" << "Коловорот" << "Ґудзик" << "Сніжинка";
     ui->formComboBox->addItems(formsList);
 
-    // results in changing the form of the ukrword
-    connect(ui->formComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onUkrwordFormChanged()));
+    // TODO: add more signals
+
+    connect(ui->formComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(onInputChanged()));
+    connect(ui->authorLineEdit,SIGNAL(textEdited(QString)),this,SLOT(onInputChanged()));
 
     // prevents from cliclking the button (by default)
     ui->nextPushButton->setAttribute(Qt::WA_TransparentForMouseEvents);
@@ -36,19 +38,20 @@ const QPushButton * FirstWidget::getNextButton()
     return ui->nextPushButton;
 }
 
-void FirstWidget::onUkrwordFormChanged()
+void FirstWidget::onInputChanged()
 {
     // If none of the forms was selected then the "next" button will ignore all the mouse events
     bool disable = (ui->formComboBox->currentText() == "--Не обрано--");
+    // ... or if the length of the author's surname is one character
+    disable = disable || (ui->authorLineEdit->text().length() < 2);
+
+    // TODO: add more validation for the surname
+
     ui->nextPushButton->setAttribute(Qt::WA_TransparentForMouseEvents,disable);
     ui->nextPushButton->setDisabled(disable);
-    emit ukrwordFormChanged(ui->formComboBox->currentText());
-}
 
-/*void MainWindow::on_langComboBox_currentIndexChanged(int index)
-{
-//    QVector<QString> v(2);
-//    v[0] = "Choose the language";
-//    v[1] = "Оберіть мову";
-//    ui->langLabel->setText(v[index]);
-}*/
+    UkrWord::Bundle bundle;
+    bundle.author() = ui->authorLineEdit->text();
+    bundle.aphorism() = ui->aphorismPlainTextEdit->toPlainText();
+    emit ukrwordFormChanged(ui->formComboBox->currentText(),bundle);
+}

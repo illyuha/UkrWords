@@ -28,7 +28,7 @@ public:
     const QPushButton * getBackButton();
 
 public slots:
-    void onUkrwordFormChanged(const QString &);
+    void onUkrwordFormChanged(const QString &, const UkrWord::Bundle &);
 };
 
 #endif // SECONDWIDGET_H

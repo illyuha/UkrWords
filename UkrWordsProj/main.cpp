@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
 {
     // TODO: delete all the unnecessary pointers
 
-    // TODO: decide how to transfer data between two widgets
-    // Useful link: stackoverflow.com/questions/6199962/how-to-pass-data-from-one-form-to-another-in-qt
+    // TODO: implement copy constructors and assignment operators for UkrWord class
+    // NB: Don't forget to read Boublik's article (distedu.ukma.kiev.ua/file.php/11/Ch_04_zmist.htm#_Toc378584795)
 
     QApplication a(argc, argv);
 
@@ -22,13 +22,12 @@ int main(int argc, char *argv[])
     const QPushButton * firstNextButton = firstWidget.getNextButton();
     const QPushButton * firstBackButton = secondWidget.getBackButton();
 
-    QObject::connect(&firstState,SIGNAL(exited()),&firstWidget,SLOT(hide()));
-    QObject::connect(&secondState,SIGNAL(entered()),&secondWidget,SLOT(show()));
-    QObject::connect(&secondState,SIGNAL(exited()),&secondWidget,SLOT(hide()));
-    QObject::connect(&firstState,SIGNAL(entered()),&firstWidget,SLOT(show()));
+    QObject::connect(&firstState,SIGNAL(exited()),&secondWidget,SLOT(show()));
+    QObject::connect(&secondState,SIGNAL(entered()),&firstWidget,SLOT(hide()));
+    QObject::connect(&secondState,SIGNAL(exited()),&firstWidget,SLOT(show()));
+    QObject::connect(&firstState,SIGNAL(entered()),&secondWidget,SLOT(hide()));
 
-    // QString?
-    QObject::connect(&firstWidget,SIGNAL(ukrwordFormChanged(const QString &)),&secondWidget,SLOT(onUkrwordFormChanged(const QString &)));
+    QObject::connect(&firstWidget,SIGNAL(ukrwordFormChanged(const QString &,const UkrWord::Bundle &)),&secondWidget,SLOT(onUkrwordFormChanged(const QString &,const UkrWord::Bundle &)));
 
     QEventTransition toSecondWidgetTransition(const_cast<QPushButton *>(firstNextButton),QEvent::MouseButtonPress);
     QEventTransition toFirstWidgetTransition(const_cast<QPushButton *>(firstBackButton),QEvent::MouseButtonPress);

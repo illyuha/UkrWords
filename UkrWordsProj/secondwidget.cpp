@@ -37,11 +37,16 @@ UkrWord * SecondWidget::createUkrWord(const QString & type)
     ukrword = NULL;
     // TODO: avoid the "hardcoding", e.g. store somewhere the strings as constants
     if (type == "Коловорот")
-        ukrword = new WheelUkrWord(scene);
+        ukrword = new WheelUkrWord(ui->graphicsView);
     return ukrword;
 }
 
-void SecondWidget::onUkrwordFormChanged(const QString &text)
+void SecondWidget::onUkrwordFormChanged(const QString & form, const UkrWord::Bundle & bundle)
 {
-    ukrword = createUkrWord(text);
+    ukrword = createUkrWord(form);
+    if (ukrword != NULL)
+    {
+        ukrword->initWithBundle(bundle);
+        ukrword->draw();
+    }
 }
