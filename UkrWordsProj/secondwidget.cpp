@@ -47,6 +47,7 @@ void SecondWidget::onUkrwordFormChanged(const QString & form, const UkrWord::Bun
     if (ukrword != NULL)
     {
         ukrword->initWithBundle(bundle);
+        scene->clear();
         ukrword->draw();
     }
 }

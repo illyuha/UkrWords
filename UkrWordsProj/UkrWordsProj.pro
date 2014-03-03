@@ -15,7 +15,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         firstwidget.cpp \
     secondwidget.cpp \
-    wheelukrword.cpp
+    wheelukrword.cpp \
+    ukrword.cpp
 
 HEADERS  += firstwidget.h \
     secondwidget.h \

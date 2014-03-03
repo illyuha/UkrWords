@@ -3,34 +3,40 @@
 
 #include <QGraphicsView>
 
+typedef unsigned int uint;
+
 // The base (abstract) class for ukrwords
 class UkrWord
 {
 protected:
     QGraphicsView * _view;
-    QString _author;
+    uint _surnameLength;
     QString _aphorism;
+    explicit UkrWord(const UkrWord & other);
+    UkrWord & operator=(const UkrWord &);
 
 public:
     class Bundle
     {
     private:
-        QString _author;
         QString _aphorism;
+        // the length of the surname of author of the aphorism
+        uint _surnameLength;
+        explicit Bundle(const Bundle &);
 
     public:
         Bundle()
         {
         }
 
-        QString & author()
+        uint & surnameLength()
         {
-            return _author;
+            return _surnameLength;
         }
 
-        const QString & author() const
+        const uint & surnameLength() const
         {
-            return _author;
+            return _surnameLength;
         }
 
         QString & aphorism()
@@ -44,29 +50,27 @@ public:
         }
     };
 
+    explicit UkrWord(QGraphicsView * view, const Bundle & bundle);
 
-    explicit UkrWord(QGraphicsView * view, const Bundle & bundle):
-        _view(view), _author(bundle.author()), _aphorism(bundle.aphorism())
-    {
-    }
-
-    explicit UkrWord(QGraphicsView * view):
-        UkrWord(view,Bundle())
-    {
-    }
+    explicit UkrWord(QGraphicsView * view);
 
     virtual ~UkrWord()
     {
     }
 
-    QString & author()
+    QGraphicsView * view() const
     {
-        return _author;
+        return _view;
     }
 
-    const QString & author() const
+    uint & surnameLength()
     {
-        return _author;
+        return _surnameLength;
+    }
+
+    const uint & surnameLength() const
+    {
+        return _surnameLength;
     }
 
     QString & aphorism()
@@ -79,11 +83,7 @@ public:
         return _aphorism;
     }
 
-    void initWithBundle(const Bundle & bundle)
-    {
-        author() = bundle.author();
-        aphorism() = bundle.aphorism();
-    }
+    void initWithBundle(const Bundle & bundle);
 
     virtual void draw() const = 0;
 

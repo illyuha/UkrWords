@@ -6,11 +6,8 @@
 class WheelUkrWord: public UkrWord
 {
 public:
-    WheelUkrWord(QGraphicsView * view):
-        UkrWord(view)
-    {
-    }
-
+    // C++11 rules!
+    using UkrWord::UkrWord;
     void draw() const;
 };
 

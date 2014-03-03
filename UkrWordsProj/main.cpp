@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     // TODO: implement copy constructors and assignment operators for UkrWord class
     // NB: Don't forget to read Boublik's article (distedu.ukma.kiev.ua/file.php/11/Ch_04_zmist.htm#_Toc378584795)
 
+    // TODO: get rid of all the warnings
+
     QApplication a(argc, argv);
 
     FirstWidget firstWidget;
